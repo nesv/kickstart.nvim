@@ -142,7 +142,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+-- vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -153,6 +153,12 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Disable line wrapping.
+vim.opt.wrap = false
+
+-- Draw a guide at column 80 to let us know when our lines are getting a touch long.
+vim.opt.colorcolumn = '80'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -189,6 +195,25 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- [[ Custom keymaps ]]
+-- Append the next line to the current line with a space in between
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- With a visual selection, pressing J will move the selected lines up and automatically re-indent them.
+-- Pressing K will move the selected lines down.
+vim.keymap.set('v', 'J', ":m '>+1<CR.gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Move up and down a page while keeping the cursor in the middle of the buffer
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
+-- Keep the highlighted search result in the middle of the screen
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', 'Q', '<nop>')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -568,9 +593,9 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -609,6 +634,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'hclfmt', -- Used to format Hashicorp Configuration Language (HCL) files
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -653,6 +679,7 @@ require('lazy').setup({
         }
       end,
       formatters_by_ft = {
+        go = { 'goimports', 'gofumpt' },
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
@@ -712,7 +739,10 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        completion = {
+          autocomplete = false,
+          completeopt = 'menu,menuone,noinsert',
+        },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -921,7 +951,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
