@@ -936,8 +936,8 @@ require('lazy').setup({
     config = function()
       require('gitblame').setup {
         enabled = true,
-        message_template = '  <author> • <date> • <summary>',
-        date_format = '%c',
+        message_template = '  <author> • <date>',
+        date_format = '%r',
         message_when_not_committed = '  Not committed',
         highlight_group = 'Comment', -- or 'Question'
         display_virtual_text = false, -- disabled to show in the statusline instead
@@ -958,6 +958,8 @@ require('lazy').setup({
         options = {
           icons_enabled = vim.g.have_nerd_font,
           theme = 'auto',
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
         },
         sections = {
           lualine_a = { 'mode' },
@@ -966,8 +968,8 @@ require('lazy').setup({
             'filename',
             { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
           },
-          lualine_x = { 'filetype' },
-          lualine_y = {},
+          lualine_x = {},
+          lualine_y = { 'filetype' },
           lualine_z = { 'location' },
         },
         inactive_sections = {
