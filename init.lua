@@ -860,17 +860,17 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      -- local statusline = require 'mini.statusline'
+      local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      -- statusline.setup { use_icons = vim.g.have_nerd_font }
+      statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
-      -- statusline.section_location = function()
-      --   return '%2l:%-2v'
-      -- end
+      statusline.section_location = function()
+        return '%2l:%-2v'
+      end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -948,45 +948,45 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'f-person/git-blame.nvim' },
-    config = function()
-      local git_blame = require 'gitblame'
-
-      require('lualine').setup {
-        options = {
-          icons_enabled = vim.g.have_nerd_font,
-          theme = 'auto',
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-        },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'branch', 'diff', 'diagnostics' },
-          lualine_c = {
-            'filename',
-            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-          },
-          lualine_x = {},
-          lualine_y = { 'filetype' },
-          lualine_z = { 'location' },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {},
-      }
-    end,
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   dependencies = { 'nvim-tree/nvim-web-devicons', 'f-person/git-blame.nvim' },
+  --   config = function()
+  --     local git_blame = require 'gitblame'
+  --
+  --     require('lualine').setup {
+  --       options = {
+  --         icons_enabled = vim.g.have_nerd_font,
+  --         theme = 'auto',
+  --         component_separators = { left = '', right = '' },
+  --         section_separators = { left = '', right = '' },
+  --       },
+  --       sections = {
+  --         lualine_a = { 'mode' },
+  --         lualine_b = { 'branch', 'diff', 'diagnostics' },
+  --         lualine_c = {
+  --           'filename',
+  --           { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+  --         },
+  --         lualine_x = {},
+  --         lualine_y = { 'filetype' },
+  --         lualine_z = { 'location' },
+  --       },
+  --       inactive_sections = {
+  --         lualine_a = {},
+  --         lualine_b = {},
+  --         lualine_c = { 'filename' },
+  --         lualine_x = { 'location' },
+  --         lualine_y = {},
+  --         lualine_z = {},
+  --       },
+  --       tabline = {},
+  --       winbar = {},
+  --       inactive_winbar = {},
+  --       extensions = {},
+  --     }
+  --   end,
+  -- },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
