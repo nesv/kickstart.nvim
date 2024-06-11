@@ -160,6 +160,8 @@ vim.opt.wrap = false
 -- Draw a guide at column 80 to let us know when our lines are getting a touch long.
 vim.opt.colorcolumn = '80'
 
+vim.opt.background = 'dark'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -829,7 +831,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'modus'
+      -- vim.cmd.colorscheme 'modus'
 
       -- You can configure highlights by doing something like:
       -- vim.cmd.hi 'Comment gui=none'
