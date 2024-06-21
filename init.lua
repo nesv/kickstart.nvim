@@ -160,8 +160,6 @@ vim.opt.wrap = false
 -- Draw a guide at column 80 to let us know when our lines are getting a touch long.
 vim.opt.colorcolumn = '80'
 
-vim.opt.background = 'dark'
-
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
