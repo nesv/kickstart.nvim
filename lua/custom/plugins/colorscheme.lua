@@ -5,7 +5,7 @@
 --   priority = 1000,
 --   init = function()
 --     vim.opt.background = 'dark'
---     vim.cmd.colorscheme 'lackluster'
+--     vim.cmd.colorscheme 'lackluster-hack'
 --   end,
 -- }
 
@@ -50,5 +50,43 @@
 --   end,
 -- }
 
+-- Modus
+-- return {
+--   'miikanissi/modus-themes.nvim',
+--   lazy = false,
+--   priority = 1000,
+--   init = function()
+--     require('modus-themes').setup {
+--       style = 'auto',
+--       variant = 'tinted',
+--       transparent = false,
+--       dim_inactive = true,
+--       hide_inactive_statusline = false,
+--       styles = {
+--         comments = { italic = true },
+--         keywords = { italic = false },
+--         functions = {},
+--         variables = {},
+--       },
+--     }
+--
+--     vim.cmd.colorscheme 'modus'
+--   end,
+-- }
+
+-- ░█▀█░█▀█░█▀█░█▀▀░█▀▄░█▀▀░█▀█░█░░░█▀█░█▀▄
+-- ░█▀▀░█▀█░█▀▀░█▀▀░█▀▄░█░░░█░█░█░░░█░█░█▀▄
+-- ░▀░░░▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀
+-- return {
+--   'NLKNguyen/papercolor-theme',
+--   lazy = false,
+--   priority = 1000,
+--   init = function()
+--     vim.opt.background = 'light'
+--     vim.cmd.colorscheme 'PaperColor'
+--   end,
+-- }
+
 -- No colour scheme, because the default neovim 0.10 theme is actually really nice.
+vim.opt.background = 'dark'
 return {}
