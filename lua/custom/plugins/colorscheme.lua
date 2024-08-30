@@ -88,5 +88,5 @@
 -- }
 
 -- No colour scheme, because the default neovim 0.10 theme is actually really nice.
-vim.opt.background = 'dark'
+-- vim.opt.background = 'dark'
 return {}
