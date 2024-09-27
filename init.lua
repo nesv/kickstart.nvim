@@ -875,25 +875,25 @@ require('lazy').setup({
   -- ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-moon'
-    end,
-    opts = {
-      style = 'moon',
-      light_style = 'day',
-      transparent = false,
-      terminal_colors = true,
-      styles = {
-        comments = { italic = false },
-        keywords = { italic = false },
-        functions = {},
-        variables = {},
-      },
-    },
-  },
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000,
+  --   init = function()
+  --     vim.cmd.colorscheme 'tokyonight-moon'
+  --   end,
+  --   opts = {
+  --     style = 'moon',
+  --     light_style = 'day',
+  --     transparent = false,
+  --     terminal_colors = true,
+  --     styles = {
+  --       comments = { italic = false },
+  --       keywords = { italic = false },
+  --       functions = {},
+  --       variables = {},
+  --     },
+  --   },
+  -- },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },

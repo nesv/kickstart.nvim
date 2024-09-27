@@ -51,28 +51,31 @@
 -- }
 
 -- Modus
--- return {
---   'miikanissi/modus-themes.nvim',
---   lazy = false,
---   priority = 1000,
---   init = function()
---     require('modus-themes').setup {
---       style = 'auto',
---       variant = 'tinted',
---       transparent = false,
---       dim_inactive = true,
---       hide_inactive_statusline = false,
---       styles = {
---         comments = { italic = true },
---         keywords = { italic = false },
---         functions = {},
---         variables = {},
---       },
---     }
---
---     vim.cmd.colorscheme 'modus'
---   end,
--- }
+return {
+  'miikanissi/modus-themes.nvim',
+  lazy = false,
+  priority = 1000,
+  init = function()
+    require('modus-themes').setup {
+      style = 'auto',
+      variant = 'default',
+      transparent = false,
+      dim_inactive = true,
+      hide_inactive_statusline = false,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = false },
+        functions = {},
+        variables = {},
+      },
+      on_colors = function(colors) end,
+      on_highlights = function(highlights, colors) end,
+    }
+
+    vim.opt.background = 'dark'
+    vim.cmd.colorscheme 'modus'
+  end,
+}
 
 -- ░█▀█░█▀█░█▀█░█▀▀░█▀▄░█▀▀░█▀█░█░░░█▀█░█▀▄
 -- ░█▀▀░█▀█░█▀▀░█▀▀░█▀▄░█░░░█░█░█░░░█░█░█▀▄
@@ -89,4 +92,4 @@
 
 -- No colour scheme, because the default neovim 0.10 theme is actually really nice.
 -- vim.opt.background = 'dark'
-return {}
+-- return {}
