@@ -77,6 +77,52 @@
 --   end,
 -- }
 
+return {
+  'oonamo/ef-themes.nvim',
+  lazy = false,
+  priority = 1000,
+  init = function()
+    require('ef-themes').setup {
+      light = 'ef-spring',
+      dark = 'ef-bio',
+      transparent = false,
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = true },
+        functions = {},
+        variables = {},
+        classes = { bold = true },
+        types = { bold = true },
+        diagnostic = 'full', -- "default", "full"
+        pickers = 'default', -- "default", "borderless"
+      },
+
+      modules = {
+        blink = true,
+        fzf = false,
+        mini = true,
+        semantic_tokens = false,
+        snacks = false,
+        treesitter = true,
+      },
+
+      on_colors = function(colors, name) end,
+
+      on_highlights = function(highlights, colors, name) end,
+
+      options = {
+        -- Whether or not to compile the themes.
+        compile = true,
+        -- The directory in which to place compiled themes.
+        compile_path = vim.fn.stdpath 'cache' .. '/ef-themes',
+      },
+    }
+
+    vim.opt.background = 'dark'
+    vim.cmd.colorscheme 'ef-theme'
+  end,
+}
+
 -- ░█▀█░█▀█░█▀█░█▀▀░█▀▄░█▀▀░█▀█░█░░░█▀█░█▀▄
 -- ░█▀▀░█▀█░█▀▀░█▀▀░█▀▄░█░░░█░█░█░░░█░█░█▀▄
 -- ░▀░░░▀░▀░▀░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀
@@ -91,5 +137,5 @@
 -- }
 
 -- No colour scheme, because the default neovim 0.10 theme is actually really nice.
-vim.opt.background = 'dark'
-return {}
+-- vim.opt.background = 'dark'
+-- return {}
